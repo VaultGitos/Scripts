@@ -1,0 +1,52 @@
+PhantomForces = game:GetService("Players")
+WorkspaceForReals = game:GetService("Workspace")
+local Mouse = PhantomForces.LocalPlayer:GetMouse()
+
+local AsshurtESPSettings = {
+	IdentifyEnemies = true;
+}
+
+function AddEsp(Player)
+if WorkspaceForReals[Player.Name]:FindFirstChild("Head") then
+if not Player.Character.Head:FindFirstChild("BillboardGui") then
+esp = Instance.new("BillboardGui", Player.Character.Head)
+esp.ExtentsOffset = Vector3.new(0, 0, 0)
+esp.Size = UDim2.new(2, 0, 2, 0)
+esp.Adornee = Player.Character.Head
+esp.AlwaysOnTop = true
+esppart2 = Instance.new("ImageLabel", esp)
+esppart2.BackgroundTransparency = 1
+esppart2.Position = UDim2.new(-0.77, 0, -0.7, 0)
+esppart2.Size = UDim2.new(2.5, 0, 4, 0)
+esppart2.Image = "rbxassetid://1012953709"
+esppart2.ImageColor3 = Player.TeamColor.Color
+
+if (AsshurtESPSettings.IdentifyEnemies == true and tostring(Player.TeamColor) ~= tostring(PhantomForces.LocalPlayer.TeamColor)) then
+enemy = Instance.new("ImageLabel", esp)
+enemy.Name = "Enemy"
+enemy.BackgroundTransparency = 1
+enemy.Position = UDim2.new(0, 0, -0.9, 0)
+enemy.Size = UDim2.new(1, 0, 1, 0)
+enemy.Image = "rbxassetid://1016827911"
+enemy.ZIndex = 2
+end
+end
+end
+end
+
+function AddEspOnDeath()
+--while wait(7) do
+for i,v in pairs(PhantomForces:GetChildren()) do
+if WorkspaceForReals:FindFirstChild(v.Name) then
+if WorkspaceForReals[v.Name]:FindFirstChild("Head") then
+if not v.Character.Head:FindFirstChild("BillboardGui") then
+AddEsp(v)
+end
+end
+--end
+end
+end
+end
+
+
+AddEspOnDeath()
