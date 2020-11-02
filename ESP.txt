@@ -8,7 +8,7 @@ local tracking = {};
 local remove = table.remove;
 local fromRGB = Color3.fromRGB;
 
-local espColor = fromRGB(255, 255, 255);
+local espColor = fromRGB(48, 25, 52);
 local teamCheck = false;
 
 local function characterRemoving(char)
